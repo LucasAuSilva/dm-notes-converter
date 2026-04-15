@@ -5,7 +5,6 @@ import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 import { Button } from './ui/button'
-
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { ButtonGroup } from './ui/button-group'
 import { IconPlus, IconX } from '@tabler/icons-react'
@@ -310,13 +309,16 @@ export function PropertiesSideBar({ setPreview, formRefs: { fileInputRef, formRe
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
                   <SelectTrigger className="w-full">
-                    <SelectValue defaultValue='EB Garamond' placeholder="Select font" />
+                    <SelectValue defaultValue='Lora' placeholder="Select font" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
                       <SelectItem value="EB Garamond">EB Garamond</SelectItem>
                       <SelectItem value="Crimson Text">Crimson Text</SelectItem>
                       <SelectItem value="CMU Serif">Computer Modern</SelectItem>
+                      <SelectItem value="Lora">Lora</SelectItem>
+                      <SelectItem value="Libre Baskerville">Libre Baskerville</SelectItem>
+                      <SelectItem value="Tinos">Tinos</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>

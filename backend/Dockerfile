@@ -1,6 +1,5 @@
 FROM python:3.12-slim
 
-# Install ONLY runtime dependencies — no build-essential
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpango-1.0-0 \
     libpangoft2-1.0-0 \
@@ -14,21 +13,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-# Install uv first (cached layer — only reruns if this line changes)
 RUN pip install --no-cache-dir uv
 
-# Copy ONLY dependency files first (cached layer — only reruns if deps change)
 COPY pyproject.toml uv.lock ./
-
-# Install Python dependencies
 RUN uv pip install --system --no-cache .
 
-# Copy fonts and register them
-COPY fonts/ /usr/local/share/fonts/custom/
-RUN fc-cache -fv
-
-# Copy app code LAST (this layer changes most often)
+# Copy everything including fonts/
 COPY . .
+
+# Install fonts from /app/fonts/ into system font directory
+RUN mkdir -p /usr/local/share/fonts/custom \
+    && cp /app/fonts/*.ttf /usr/local/share/fonts/custom/ \
+    && fc-cache -fv
+
+# Verify fonts are registered — will show in build logs
+RUN fc-list
 
 EXPOSE 8000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

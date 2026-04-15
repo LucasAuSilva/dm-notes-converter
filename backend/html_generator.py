@@ -30,7 +30,7 @@ PAPER_SIZES = {
     "A5": {
         "size": "148mm 210mm",
         "margin-top": "4mm",
-        "margin-bottom": "8mm",
+        "margin-bottom": "10mm",
         "margin-left": "6mm",
         "margin-right": "6mm"
     },

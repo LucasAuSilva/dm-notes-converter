@@ -14,7 +14,7 @@
     "@fontsource-variable/noto-serif": "^5.2.9",
     "@hookform/resolvers": "^5.2.2",
     "@owlbear-rodeo/sdk": "^3.1.0",
-    "@tabler/icons-react": "^3.40.0",
+    "@tabler/icons-react": "^3.41.1",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-router": "^1.168.8",
     "axios": "^1.13.6",
