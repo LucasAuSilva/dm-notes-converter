@@ -35,6 +35,7 @@ interface PreviewPDFFormData {
   useFileName: boolean
   marginLeft: number
   marginRight: number
+  marginBottom: number
   ignored: {
     value: string
   }[]
@@ -56,7 +57,8 @@ export function PropertiesSideBar({ setPreview, formRefs: { fileInputRef, formRe
       fontSize: 10,
       letterSpacing: 0,
       paperSize: 'A4',
-      fontFamily: 'Lora'
+      fontFamily: 'Lora',
+      marginBottom: 10
     }
   })
 
@@ -91,6 +93,7 @@ export function PropertiesSideBar({ setPreview, formRefs: { fileInputRef, formRe
         use_file_name: useFileNameChecked,
         margin_right: data.marginRight,
         margin_left: data.marginLeft,
+        margin_bottom: data.marginBottom,
         ignored: data.ignored.flatMap(i => i.value.toLowerCase()),
         tags: data.tagsToInclude.flatMap(i => i.value.toLowerCase()),
       })
@@ -191,6 +194,18 @@ export function PropertiesSideBar({ setPreview, formRefs: { fileInputRef, formRe
               <Label htmlFor="marginRight">Right</Label>
               <InputGroup>
                 <InputGroupInput id='marginRight' placeholder="0" {...register('marginRight', {
+                    valueAsNumber: true
+                  })}
+                />
+                <InputGroupAddon align="inline-end">
+                  <InputGroupText>mm</InputGroupText>
+                </InputGroupAddon>
+              </InputGroup>
+            </div>
+            <div className='flex flex-1 flex-col gap-2'>
+              <Label htmlFor="marginBottom">Down</Label>
+              <InputGroup>
+                <InputGroupInput id='marginBottom' placeholder="0" {...register('marginBottom', {
                     valueAsNumber: true
                   })}
                 />

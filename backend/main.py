@@ -59,6 +59,7 @@ async def preview(
     config: JSON string with preview configuration
     """
 
+    print(config)
     parsed = json.loads(config)
     preview_config = PreviewConfig(**parsed)
     md_files = []

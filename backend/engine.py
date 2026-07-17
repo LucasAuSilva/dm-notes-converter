@@ -48,7 +48,8 @@ def preview_html(md_files, config: PreviewConfig):
         columns=config.columns,
         paper_size=config.paper_size,
         margin_left=config.margin_left,
-        margin_right=config.margin_right
+        margin_right=config.margin_right,
+        margin_bottom=config.margin_bottom
     ))
 
     return {

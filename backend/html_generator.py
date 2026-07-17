@@ -30,7 +30,7 @@ PAPER_SIZES = {
     "A5": {
         "size": "148mm 210mm",
         "margin-top": "4mm",
-        "margin-bottom": "10mm",
+        "margin-bottom": "15mm",
         "margin-left": "6mm",
         "margin-right": "6mm"
     },
@@ -50,11 +50,16 @@ def build_html(html: HtmlBuildConfig):
 
     margin_left_css = PAPER_SIZES[html.paper_size]["margin-left"]
     margin_right_css = PAPER_SIZES[html.paper_size]["margin-right"]
+    margin_bottom_css = PAPER_SIZES[html.paper_size]["margin-bottom"]
 
     if html.margin_left is not None:
         margin_left_css = str(html.margin_left) + "mm"
     if html.margin_right is not None:
         margin_right_css = str(html.margin_right) + "mm"
+    if html.margin_bottom is not None:
+        margin_bottom_css = str(html.margin_bottom) + "mm"
+
+    print(margin_bottom_css)
 
     if html.columns >= 2:
         column_css = f"""
@@ -72,6 +77,7 @@ def build_html(html: HtmlBuildConfig):
         margin-bottom: {PAPER_SIZES[html.paper_size]["margin-bottom"]};
         margin-left: {margin_left_css};
         margin-right: {margin_right_css};
+        margin-bottom: {margin_bottom_css};
     }}
 
     body {{
@@ -94,12 +100,13 @@ def build_html(html: HtmlBuildConfig):
         font-variant: small-caps;
         border-bottom: 1px solid #444;
         margin-top: 3px;
+        margin-bottom: 2px;
     }}
 
     h3 {{
         font-size: {html.font_size + 0.3}pt;
         font-variant: small-caps;
-        margin-top: 3px;
+        margin-top: 2px;
     }}
 
     p {{

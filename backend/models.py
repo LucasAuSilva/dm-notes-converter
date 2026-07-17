@@ -16,6 +16,7 @@ class PreviewConfig(BaseModel):
     use_file_name: bool = False
     margin_right: float | None = None
     margin_left: float | None = None
+    margin_bottom: float | None = None
     ignored: list[str] = []
     tags: list[str] = []
 
@@ -30,3 +31,4 @@ class HtmlBuildConfig(BaseModel):
     paper_size: str
     margin_left: float | None = None
     margin_right: float | None = None
+    margin_bottom: float | None = None
